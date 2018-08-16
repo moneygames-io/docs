@@ -9,6 +9,7 @@ The fields we `players-redis` cares about are:
 
 * `status` the current status of a player at any given point. Possible values are: 
 	* pre-pay
+	* disconnected
 	* post-pay
 	* pre-game
 	* assigned
