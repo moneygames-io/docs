@@ -16,3 +16,4 @@ The fields `gameserver-redis` cares about are:
 	* `game-concluded / fatal error `
 * `allocated-players`: the number of players intended to be a part of this game
 * `connected-players`: number of players who have connected to the container associated with this game
+* `winner`: the token (playerid) that won
