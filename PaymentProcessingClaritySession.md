@@ -25,9 +25,10 @@ Once the winner is identified need a way to send them money.
 ### Possible solutions:
 
 #### Batching
-	* 100 players, 100 transactions
-		* Can save on fees through batching
-		* Question: *what if one of the inputs is unconfirmed?* Does that block the whole transaction? 
+
+* 100 players, 100 transactions
+	* Can save on fees through batching
+	* Question: *what if one of the inputs is unconfirmed?* Does that block the whole transaction? 
 		
 #### Many inputs 1 output
 
@@ -46,20 +47,23 @@ Once the winner is identified need a way to send them money.
 			* [Search · child pays for parent · GitHub](https://github.com/bcoin-org/bcoin/search?q=child+pays+for+parent&unscoped_q=child+pays+for+parent) sad. How does this work? 
 
 Side mini questions:
-	* So what exactly happens in the following *scenario 1*:
-		* transaction created with unconfirmed inputs, and broadcasted.
-		* 1 of those inputs was double spent post broad cast?  
-	* It doesn’t really matter what wallet or address a transaction came from, right? You just take the UTXO’s and sign them with the various receiving address’ private key’s and craft a transaction composed of those, right? 
+
+* So what exactly happens in the following *scenario 1*:
+	* transaction created with unconfirmed inputs, and broadcasted.
+	* 1 of those inputs was double spent post broad cast?  
+* It doesn’t really matter what wallet or address a transaction came from, right? You just take the UTXO’s and sign them with the various receiving address’ private key’s and craft a transaction composed of those, right? 
 
 
 # Intended course of action [RFC]:
 
 ## Before Launch
 On joining:
-	* Proceed user immediately
+
+* Proceed user immediately
 
 During matchmaker and game
-	* Subscribe to double spend event detection 
+
+* Subscribe to double spend event detection 
 
 After winner announced:
 
