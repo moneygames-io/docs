@@ -26,23 +26,25 @@ Payserver Setups include:
 How to create self-signed cert:
 
 1: Run this command to generate
-sudo openssl req -x509 -nodes -days 365 -newkey rsa:2048 -keyout /etc/ssl/private/self-signed.key -out /etc/ssl/certs/self-signed.crt
+`sudo openssl req -x509 -nodes -days 365 -newkey rsa:2048 -keyout /etc/ssl/private/self-signed.key -out /etc/ssl/certs/self-signed.crt`
 
-2: Retrieve self-signed certificate
-scp root@testnet.moneygames.io:/etc/ssl/certs/self-signed.crt /Users/mattbowyer/Desktop/self-signed.crt
-then move that self-signed cetificate into the git folder of a microservice
+2: Retrieve self-signed certificate into the git folder of a microservice
+`scp root@testnet.moneygames.io:/etc/ssl/certs/self-signed.crt ~/sneks/main/microservices/payserver/self-signed.crt`
 
 3: added these commands to the Dockerfile of that microservice:
+```
 COPY self-signed.crt /usr/local/share/ca-certificates
 RUN update-ca-certificates
+```
 
 4:Add this environment variable to the Docker-compose.yaml
-    environment:
-      - SSL=true
-      - NODE_EXTRA_CA_CERTS=/usr/local/share/ca-certificates/self-signed.crt
-      
-5:Run this command on the bcoin node to get it running with ssl
+```
+environment:
+    - SSL=true
+    - NODE_EXTRA_CA_CERTS=/usr/local/share/ca-certificates/self-signed.crt
+```
 
-bcoin --network=testnet --http-host=0.0.0.0  --wallet-http-host=0.0.0.0 --api-key=hunterkey --wallet-api-key=hunterkey --ssl=true --wallet-ssl=true --ssl-cert=/etc/ssl/certs/bcoin-test.crt --wallet-ssl-cert=/etc/ssl/certs/bcoin-test.crt --ssl-key=/etc/ssl/private/bcoin-test.key --wallet-ssl-key=/etc/ssl/private/bcoin-test.key
+5:Run this command on the bcoin node to get it running with ssl
+`bcoin --network=testnet --http-host=0.0.0.0  --wallet-http-host=0.0.0.0 --api-key=hunterkey --wallet-api-key=hunterkey --ssl=true --wallet-ssl=true --ssl-cert=/etc/ssl/certs/self-signed.crt --wallet-ssl-cert=/etc/ssl/certs/self-signed.crt --ssl-key=/etc/ssl/private/self-signed.key --wallet-ssl-key=/etc/ssl/private/self-signed.key`
 
 
