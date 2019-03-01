@@ -42,6 +42,7 @@ RUN update-ca-certificates
       - NODE_EXTRA_CA_CERTS=/usr/local/share/ca-certificates/self-signed.crt
       
 5:Run this command on the bcoin node to get it running with ssl
+
 bcoin --network=testnet --http-host=0.0.0.0  --wallet-http-host=0.0.0.0 --api-key=hunterkey --wallet-api-key=hunterkey --ssl=true --wallet-ssl=true --ssl-cert=/etc/ssl/certs/bcoin-test.crt --wallet-ssl-cert=/etc/ssl/certs/bcoin-test.crt --ssl-key=/etc/ssl/private/bcoin-test.key --wallet-ssl-key=/etc/ssl/private/bcoin-test.key
 
 
